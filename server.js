@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const Item = require('./models/item')
 require('dotenv').config()
 const Items = require('./models/item')
 const app = express()
@@ -21,8 +22,24 @@ mongoose.connection.once('open', ()=> {
     console.log('connected to mongo');
 });
 
+app.put('/create_item', async(req, res) =>{
+    const {priceInput: price, inventoryInput: inventory ,dateInput: nextDelivery, deliveryInput: deliveryAmt ,nameInput: name} = req.body;
 
+    let returnedValue = await Item.create({
+        price,
+        inventory,
+        nextDelivery,
+        deliveryAmt,
+        name
+    })
 
+    console.log(returnedValue);
+    if (returnedValue) {
+        console.log("upload complete");
+    }
+    res.send(returnedValue);
+
+})
 
 
 
