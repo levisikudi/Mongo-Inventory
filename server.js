@@ -41,7 +41,13 @@ app.put('/create_item', async(req, res) =>{
 
 })
 
-
+app.get('/items', async (req, res) =>{
+    // get data from backend
+    let response = await Item.find({});
+    console.log(response);
+     //send to front end
+    res.json(response)
+})
 
 
 app.listen(4000, () => {

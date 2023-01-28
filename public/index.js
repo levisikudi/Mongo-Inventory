@@ -2,6 +2,8 @@ console.log("Hello");
 
 let submitButton = document.getElementById('submit-button')
 
+let menuButton = document.getElementById('menu-button')
+
 
 submitButton.addEventListener('click', async () =>{
     let nameInput = document.getElementById('name-input').value
@@ -27,4 +29,11 @@ submitButton.addEventListener('click', async () =>{
         body: JSON.stringify(item)
     })
     console.log(response.status);   
+    location.reload()
 })
+
+menuButton.addEventListener('click',() =>{
+    window.location.href ="./display_items"
+    console.log("Chicken flakes");
+})
+
