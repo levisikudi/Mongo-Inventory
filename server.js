@@ -49,6 +49,13 @@ app.get('/items', async (req, res) =>{
     res.json(response)
 })
 
+app.get('/item/:itemId', async (req, res) =>{
+    let id = req.params.itemId
+
+    let response = await Item.findById(id)
+    res.send(response)
+})
+
 
 app.listen(4000, () => {
     console.log(`Server is Listening on 4000`)
